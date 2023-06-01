@@ -6,7 +6,7 @@ import "./Table.scss";
 
 
 
-export const TableRowsLoader = ({ rowsNum }:{rowsNum:number}) => {
+export const TableRowsLoader:React.FC<{rowsNum:number}> = ({ rowsNum }) => {
   return (
     <>
     {[...Array(rowsNum)].map((_, index) => (

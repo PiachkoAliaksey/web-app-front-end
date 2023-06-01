@@ -14,7 +14,7 @@ import { Navigate } from "react-router-dom";
 
 import './Registration.scss';
 
-export const Registration = () => {
+export const Registration:React.FC = () => {
   const isAuth = useSelector((state: RootState) => Boolean(state.auth.data))
   const dispatch: ThunkDispatch<{ email: string, password: string,fullName: string }, void, AnyAction> = useDispatch();
   const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm({
@@ -27,7 +27,6 @@ export const Registration = () => {
   })
 
   const onSubmit = async (values: { email: string, password: string,fullName: string }) => {
-    console.log(values);
     const data = await dispatch(fetchRegister(values));
     console.log(data)
     if (!data.payload) {

@@ -30,10 +30,9 @@ export interface IUser {
 }
 
 
-export const Home = () => {
+export const Home:React.FC = () => {
   const dispatch: ThunkDispatch<IUser[], void, AnyAction> = useDispatch();
   const userData = useSelector((state: RootState) => state.auth.data)
-  console.log(userData)
   const isAuth = Boolean(userData) && userData.status !== 'blocked';
   const { items,status }:{items: IUser[], status: string} = useSelector((state: RootState) => state.users.users)
   const isTableUsersLoading = status === 'loading';

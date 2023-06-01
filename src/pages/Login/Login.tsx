@@ -12,7 +12,7 @@ import { fetchUserData} from "../../redux/slices/auth";
 import { RootState } from "redux/store";
 import "./Login.scss";
 
-export const Login = () => {
+export const Login:React.FC = () => {
   const isAuth = useSelector((state:RootState) => Boolean(state.auth.data)&&state.auth.data.status!=='blocked')
   const dispatch:ThunkDispatch<{email: string, password: string}, void, AnyAction> = useDispatch();
   const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm({

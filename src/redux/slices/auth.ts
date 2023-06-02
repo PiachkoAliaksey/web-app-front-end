@@ -7,9 +7,12 @@ interface IInitialState {
   status:string
 }
 
+const REACT_APP_API_URL = 'https://web-app-server-75zy.onrender.com';
+
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: REACT_APP_API_URL
 });
+//process.env.REACT_APP_API_URL
 
 instance.interceptors.request.use((config)=>{
   config.headers.Authorization=window.localStorage.getItem('token');

@@ -3,9 +3,11 @@ import axios from 'axios';
 import { IUser } from '../../pages/Home';
 
 
-export const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+const REACT_APP_API_URL = 'https://web-app-server-75zy.onrender.com';
+const instance = axios.create({
+  baseURL: REACT_APP_API_URL
 });
+//process.env.REACT_APP_API_URL
 
 instance.interceptors.request.use((config)=>{
   config.headers.Authorization=window.localStorage.getItem('token');

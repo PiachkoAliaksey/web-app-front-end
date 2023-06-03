@@ -49,33 +49,39 @@ export const Home: React.FC = () => {
     }
   }
 
-  const handlerDeleteUser = async (arrId: string[]) => {
-    arrId.forEach(async (user) => {
-      await dispatch(fetchDeleteUser(user));
-      if (userData._id === user) {
-        dispatch(logout());
-        window.localStorage.removeItem('token')
-      }
-    })
-    setTimeout(() => window.location.reload(), 1000);
+  const handlerDeleteUser = (arrId: string[]) => {
+    if(arrId.length){
+      arrId.forEach(async(user) => {
+        if (userData._id === user) {
+          dispatch(logout());
+          window.localStorage.removeItem('token');
+        }
+        await dispatch(fetchDeleteUser(user));
+      })
+      setTimeout(()=>window.location.reload(),800)
+    }
   }
 
-  const handlerBlockUser = async (arrId: string[], status = 'blocked') => {
-    arrId.forEach(async (user) => {
-      await dispatch(fetchStatusStatusUser({ user, status }));
-      if (userData._id === user) {
-        dispatch(logout());
-        window.localStorage.removeItem('token');
-      }
-    })
-    setTimeout(() => window.location.reload(), 1000);
+  const handlerBlockUser = (arrId: string[], status = 'blocked') => {
+    if(arrId.length){
+      arrId.forEach(async (user) => {
+        if (userData._id === user) {
+          dispatch(logout());
+          window.localStorage.removeItem('token');
+        }
+       await dispatch(fetchStatusStatusUser({ user, status }));
+      })
+      setTimeout(()=>window.location.reload(),800)
+    }
   }
 
-  const handlerActiveUser = async (arrId: string[], status = 'active') => {
-    arrId.forEach(async (user) => {
-      await dispatch(fetchStatusStatusUser({ user, status }));
-    })
-    setTimeout(() => window.location.reload(), 1000);
+  const handlerActiveUser = (arrId: string[], status = 'active') => {
+    if(arrId.length){
+      arrId.forEach(async (user) => {
+        await dispatch(fetchStatusStatusUser({ user, status }));
+      })
+      setTimeout(()=>window.location.reload(),800)
+    }
   }
 
   useEffect(() => {

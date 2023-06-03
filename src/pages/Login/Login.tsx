@@ -25,7 +25,6 @@ export const Login:React.FC = () => {
 
   const onSubmit = async(values: { email: string, password: string }) => {
     const data = await dispatch(fetchUserData(values));
-    console.log(data)
     if(!data.payload){
       return alert('Not available authorization')
     }

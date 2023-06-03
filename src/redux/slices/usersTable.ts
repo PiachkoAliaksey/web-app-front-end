@@ -19,7 +19,6 @@ export const fetchUsersTable = createAsyncThunk('table/fetchUserTable', async ()
   return data;
 })
 export const fetchDeleteUser = createAsyncThunk('table/fetchDeleteUser', async(id:string) =>{
-  console.log(instance.delete(`/auth/table/${id}`));
   return instance.delete(`/auth/table/${id}`);
 }
 )

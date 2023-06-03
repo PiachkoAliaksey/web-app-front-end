@@ -14,9 +14,9 @@ import { Navigate } from "react-router-dom";
 
 import './Registration.scss';
 
-export const Registration:React.FC = () => {
+export const Registration: React.FC = () => {
   const isAuth = useSelector((state: RootState) => Boolean(state.auth.data))
-  const dispatch: ThunkDispatch<{ email: string, password: string,fullName: string }, void, AnyAction> = useDispatch();
+  const dispatch: ThunkDispatch<{ email: string, password: string, fullName: string }, void, AnyAction> = useDispatch();
   const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm({
     defaultValues: {
       email: '',
@@ -26,9 +26,8 @@ export const Registration:React.FC = () => {
     mode: 'onSubmit'
   })
 
-  const onSubmit = async (values: { email: string, password: string,fullName: string }) => {
+  const onSubmit = async (values: { email: string, password: string, fullName: string }) => {
     const data = await dispatch(fetchRegister(values));
-    console.log(data)
     if (!data.payload) {
       return alert('Not available registration')
     }

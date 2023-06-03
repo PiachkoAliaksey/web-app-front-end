@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef,useCallback ,useMemo} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -37,6 +37,7 @@ export const Home: React.FC = () => {
   const { items, status }: { items: IUser[], status: string } = useSelector((state: RootState) => state.users.users)
   const isTableUsersLoading = status === 'loading';
 
+
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState<string[]>([]);
 
@@ -55,8 +56,8 @@ export const Home: React.FC = () => {
         dispatch(logout());
         window.localStorage.removeItem('token')
       }
-      setTimeout(() => window.location.reload(), 1000);
     })
+    setTimeout(() => window.location.reload(), 1000);
   }
 
   const handlerBlockUser = async (arrId: string[], status = 'blocked') => {

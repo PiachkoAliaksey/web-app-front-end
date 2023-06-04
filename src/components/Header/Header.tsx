@@ -29,7 +29,7 @@ export const Header = () => {
             {isAuth ? (
               <>
                 <Button onClick={onClickLogout} variant="contained" color="error">
-                  Leave
+                  Log out
                 </Button>
               </>
             ) : (

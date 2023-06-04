@@ -28,8 +28,9 @@ export const Registration: React.FC = () => {
 
   const onSubmit = async (values: { email: string, password: string, fullName: string }) => {
     const data = await dispatch(fetchRegister(values));
+    console.log(data);
     if (!data.payload) {
-      return alert('Not available registration')
+      return alert('Not available registration, minimum size of Full Name - 3 symbols, minimum size Password - 1 symbols')
     }
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token)
